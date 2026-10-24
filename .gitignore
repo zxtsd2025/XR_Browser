@@ -1,0 +1,20 @@
+# Build output
+bin/
+obj/
+dist/
+.packages/
+.dotnet-home/
+
+# Local runtime / test data
+.runtime-data*/
+.run-*/
+.rename-test/
+.testserver/
+screenshots/
+*.log
+.app.pid
+*.nupkg
+
+# User data (portable mode or local testing)
+Data/
+UserData/

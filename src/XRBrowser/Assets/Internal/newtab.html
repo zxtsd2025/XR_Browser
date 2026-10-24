@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>新标签页</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script>
+    (function () {
+      try {
+        document.documentElement.dataset.theme = window.__XR_INITIAL_THEME__ === 'dark' ? 'dark' : 'light';
+      } catch (_) { document.documentElement.dataset.theme = 'light'; }
+    })();
+  </script>
+</head>
+<body class="newtab">
+  <div class="newtab-bg" id="newtabBg" aria-hidden="true"></div>
+
+  <button class="newtab-settings-button" id="newtabSettingsButton" type="button"
+          title="新标签页设置" aria-label="新标签页设置">
+    <svg class="icon" viewBox="0 0 24 24">
+      <path d="M4 7h10M18 7h2M4 17h2M10 17h10"/>
+      <circle cx="16" cy="7" r="2"/>
+      <circle cx="8" cy="17" r="2"/>
+    </svg>
+  </button>
+
+  <div class="newtab-settings-panel" id="newtabSettingsPanel" hidden>
+    <div class="newtab-settings-head">
+      <span>新标签页</span>
+      <button class="newtab-settings-close" id="closeNewtabSettings" type="button" title="关闭" aria-label="关闭">×</button>
+    </div>
+
+    <div class="newtab-setting-row">
+      <div class="newtab-setting-text">
+        <div class="newtab-setting-label">显示最近访问</div>
+        <div class="newtab-setting-help">在搜索框下方显示最近访问的网站。</div>
+      </div>
+      <label class="switch">
+        <input type="checkbox" id="recentToggle" />
+        <span class="track"></span>
+      </label>
+    </div>
+
+    <div class="newtab-settings-divider"></div>
+
+    <div class="newtab-setting-label">背景图片</div>
+    <div class="newtab-bg-preview empty" id="newtabBgPreview">
+      <img id="newtabBgPreviewImg" alt="" hidden />
+      <span id="newtabBgPreviewEmpty">默认背景</span>
+    </div>
+    <div class="newtab-bg-actions">
+      <button class="btn" id="chooseNewtabBg" type="button">选择图片</button>
+      <button class="btn ghost" id="clearNewtabBg" type="button" hidden>恢复默认</button>
+    </div>
+  </div>
+
+  <div class="newtab-wrap">
+    <main class="newtab-main">
+      <form class="search-shell" id="searchShell" autocomplete="off">
+        <div class="search-box">
+          <svg class="icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m16.5 16.5 4 4"/></svg>
+          <input class="search-input" id="searchInput" type="text" aria-label="搜索或输入网址"
+                 placeholder="在 Bing 中搜索，或输入网址" spellcheck="false" />
+          <span class="search-kbd">Ctrl K</span>
+        </div>
+        <div class="search-menu" id="searchMenu" role="listbox"></div>
+      </form>
+
+      <section class="recent" id="recent" hidden>
+        <h2 class="recent-title">最近访问</h2>
+        <div class="shortcuts" id="shortcuts"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="newtab.js"></script>
+</body>
+</html>
